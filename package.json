@@ -1,0 +1,33 @@
+{
+  "name": "nachos-settings-file",
+  "version": "1.0.0",
+  "description": "The package to handle nachos settings files",
+  "main": "lib\\index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nachos/settings-file"
+  },
+  "keywords": [
+    "nachos",
+    "settings",
+    "json",
+    "file"
+  ],
+  "author": "Nachos team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nachos/settings-file/issues"
+  },
+  "homepage": "https://github.com/nachos/settings-file",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.11.0",
+    "jshint-stylish": "^2.0.0"
+  },
+  "dependencies": {
+    "jsonfile": "^2.0.1"
+  }
+}
