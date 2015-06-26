@@ -6,7 +6,7 @@ Settings file is a tool to handle nachos settings files
   <thead>
     <tr>
       <th>Linux</th>
-      <th>OS X</th>
+      <th>OSX</th>
       <th>Windows</th>
       <th>Coverage</th>
       <th>Dependencies</th>
