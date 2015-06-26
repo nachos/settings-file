@@ -39,7 +39,9 @@
     "gulp-mocha": "^2.1.2",
     "jshint-stylish": "^2.0.0",
     "lazypipe": "^0.2.4",
-    "run-sequence": "^1.1.1"
+    "mockery": "^1.4.0",
+    "run-sequence": "^1.1.1",
+    "sinon": "^1.15.3"
   },
   "dependencies": {
     "debug": "^2.2.0",
