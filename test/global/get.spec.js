@@ -3,18 +3,18 @@
 var chai = require('chai');
 var expect = chai.expect;
 var mockery = require('mockery');
-var util = require('./util');
+var util = require('../util');
 
 chai.use(require('chai-as-promised'));
 
-describe('get', function () {
+describe('global get', function () {
   describe('existing app', function () {
     var test = { global: { test: 'test' } };
     var SettingsFile;
 
     beforeEach(function () {
       util.mockExisting(mockery, test);
-      SettingsFile = require('../lib');
+      SettingsFile = require('../../lib/index');
     });
 
     describe('without defaults', function () {
@@ -24,16 +24,17 @@ describe('get', function () {
         settings = new SettingsFile('test');
       });
 
-      it('should return the file content', function () {
+      it('should return the global content', function () {
         return expect(settings.get()).to.eventually.eql(test.global);
       });
 
-      it('should return the file content - sync', function () {
+      it('should return the global content - sync', function () {
         expect(settings.getSync()).to.eql(test.global);
       });
     });
 
     describe('with defaults', function () {
+      var expected;
       var settings;
       var defaults;
 
@@ -45,14 +46,15 @@ describe('get', function () {
         settings = new SettingsFile('test', {
           globalDefaults: defaults
         });
+        expected = { test: test.global.test, test2: defaults.test2 };
       });
 
-      it('should return the file content combined with defaults', function () {
-        return expect(settings.get()).to.eventually.eql({ test: test.global.test, test2: defaults.test2 });
+      it('should return the global content combined with defaults', function () {
+        return expect(settings.get()).to.eventually.eql(expected);
       });
 
-      it('should return the file content combined with defaults - sync', function () {
-        expect(settings.getSync()).to.eql({ test: test.global.test, test2: defaults.test2 });
+      it('should return the global content combined with defaults - sync', function () {
+        expect(settings.getSync()).to.eql(expected);
       });
     });
 
@@ -66,7 +68,7 @@ describe('get', function () {
 
     beforeEach(function () {
       util.mockNotExisting(mockery);
-      SettingsFile = require('../lib');
+      SettingsFile = require('../../lib/index');
     });
 
     describe('without defaults', function () {

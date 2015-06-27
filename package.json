@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/nachos/settings-file",
   "devDependencies": {
+    "node-uuid": "^1.4.3",
     "chai": "^3.0.0",
     "chai-as-promised": "^5.1.0",
     "git-validate": "^2.0.2",
@@ -52,7 +53,6 @@
     "jsonfile": "^2.0.1",
     "lodash": "^3.9.3",
     "mkdirp": "^0.5.1",
-    "node-uuid": "^1.4.3",
     "q": "^1.4.1"
   }
 }

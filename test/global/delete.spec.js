@@ -3,19 +3,19 @@
 var chai = require('chai');
 var expect = chai.expect;
 var mockery = require('mockery');
-var util = require('./util');
+var util = require('../util');
 
 chai.use(require('chai-as-promised'));
 chai.use(require('sinon-chai'));
 
-describe('delete', function () {
+describe('global delete', function () {
   describe('existing app', function () {
     var settings;
     var fs;
 
     beforeEach(function () {
       fs = util.mockExisting(mockery).fs;
-      var SettingsFile = require('../lib');
+      var SettingsFile = require('../../lib/index');
 
       settings = new SettingsFile('test');
     });
@@ -42,7 +42,7 @@ describe('delete', function () {
 
     beforeEach(function () {
       fs = util.mockNotExisting(mockery).fs;
-      var SettingsFile = require('../lib');
+      var SettingsFile = require('../../lib/index');
 
       settings = new SettingsFile('test');
     });

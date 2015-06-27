@@ -3,6 +3,14 @@
 var sinon = require('sinon');
 var fs = require('fs');
 
+module.exports.instanceSettings = function (uuid, settings) {
+  var template = { instances: { } };
+
+  template.instances[uuid] = settings;
+
+  return template;
+};
+
 module.exports.unmock = function (mockery) {
   mockery.deregisterMock('jsonfile');
   mockery.deregisterMock('fs');
