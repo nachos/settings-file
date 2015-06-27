@@ -162,6 +162,8 @@ describe('exports', function () {
     expect(insatnce.saveSync).to.be.a('function');
     expect(insatnce.set).to.be.a('function');
     expect(insatnce.setSync).to.be.a('function');
+    expect(insatnce.delete).to.be.a('function');
+    expect(insatnce.deleteSync).to.be.a('function');
   });
 
   afterEach(function () {
