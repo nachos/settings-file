@@ -19,7 +19,7 @@ Settings file is a tool to handle nachos settings files
         <a href="https://travis-ci.org/nachos/settings-file"><img src="https://img.shields.io/travis/nachos/settings-file.svg?style=flat-square"></a>
       </td>
       <td align="center">
-        <a href="https://ci.appveyor.com/project/noamokman/settings-file"><img src="https://img.shields.io/appveyor/ci/noamokman/settings-file.svg?style=flat-square"></a>
+        <a href="https://ci.appveyor.com/project/noamokman/settings-file"><img src="https://img.shields.io/appveyor/ci/nachos/settings-file.svg?style=flat-square"></a>
       </td>
       <td align="center">
 <a href='https://coveralls.io/r/nachos/settings-file'><img src='https://img.shields.io/coveralls/nachos/settings-file.svg?style=flat-square' alt='Coverage Status' /></a>
