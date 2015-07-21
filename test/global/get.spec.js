@@ -114,4 +114,33 @@ describe('global get', function () {
       util.unmock(mockery);
     });
   });
+
+  describe('failing', function () {
+    var settings;
+
+    beforeEach(function () {
+      util.mockFailing(mockery);
+      var SettingsFile = require('../../lib/index');
+
+      settings = new SettingsFile('test');
+    });
+
+    describe('without defaults', function () {
+      it('should fail', function () {
+        return expect(settings.get()).to.eventually.be.rejected;
+      });
+
+      it('should fail - sync', function () {
+        var fn = function () {
+          settings.getSync();
+        };
+
+        expect(fn).to.throw();
+      });
+    });
+
+    afterEach(function () {
+      util.unmock(mockery);
+    });
+  });
 });

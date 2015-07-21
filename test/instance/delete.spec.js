@@ -17,7 +17,7 @@ describe('instance delete', function () {
     var jsonfile;
 
     beforeEach(function () {
-      existContent = { global: { test: 'test' } };
+      existContent = {global: {test: 'test'}};
     });
 
     describe('existing instance', function () {
@@ -25,8 +25,8 @@ describe('instance delete', function () {
 
       beforeEach(function () {
         existContent.instances = {};
-        existContent.instances[uuid] = { test: 'test' };
-        expected = { global: { test: 'test' }, instances: {} };
+        existContent.instances[uuid] = {test: 'test'};
+        expected = {global: {test: 'test'}, instances: {}};
 
         jsonfile = util.mockExisting(mockery, existContent).jsonfile;
         var SettingsFile = require('../../lib/index');
@@ -61,14 +61,41 @@ describe('instance delete', function () {
       });
 
       it('should not save', function () {
-        return instance.delete().then(function () {
-          expect(jsonfile.writeFile).to.not.have.been.called;
-        });
+        return instance.delete()
+          .then(function () {
+            expect(jsonfile.writeFile).to.not.have.been.called;
+          });
       });
 
       it('should not save - sync', function () {
         instance.deleteSync();
         expect(jsonfile.writeFileSync).to.not.have.been.called;
+      });
+
+      afterEach(function () {
+        util.unmock(mockery);
+      });
+    });
+
+    describe('failing', function () {
+      beforeEach(function () {
+        jsonfile = util.mockFailing(mockery, existContent).jsonfile;
+        var SettingsFile = require('../../lib/index');
+
+        settings = new SettingsFile('test');
+        instance = settings.instance(uuid);
+      });
+
+      it('should not save', function () {
+        return expect(instance.delete()).to.eventually.be.rejected;
+      });
+
+      it('should not save - sync', function () {
+        var fn = function () {
+          instance.deleteSync();
+        };
+
+        expect(fn).to.throw();
       });
 
       afterEach(function () {

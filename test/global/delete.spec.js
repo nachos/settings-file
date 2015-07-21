@@ -21,9 +21,10 @@ describe('global delete', function () {
     });
 
     it('should delete settings', function () {
-      return settings.delete().then(function () {
-        expect(fs.unlink).to.have.been.calledWith(settings._path);
-      });
+      return settings.delete()
+        .then(function () {
+          expect(fs.unlink).to.have.been.calledWith(settings._path);
+        });
     });
 
     it('should delete settings - sync', function () {
@@ -48,14 +49,43 @@ describe('global delete', function () {
     });
 
     it('should delete settings', function () {
-      return settings.delete().then(function () {
-        expect(fs.unlink).to.have.been.calledWith(settings._path);
-      });
+      return settings.delete()
+        .then(function () {
+          expect(fs.unlink).to.have.been.calledWith(settings._path);
+        });
     });
 
     it('should delete settings - sync', function () {
       settings.deleteSync();
       expect(fs.unlinkSync).to.have.been.calledWith(settings._path);
+    });
+
+    afterEach(function () {
+      util.unmock(mockery);
+    });
+  });
+
+  describe('failing', function () {
+    var settings;
+    var fs;
+
+    beforeEach(function () {
+      fs = util.mockFailing(mockery).fs;
+      var SettingsFile = require('../../lib/index');
+
+      settings = new SettingsFile('test');
+    });
+
+    it('should fail to delete settings', function () {
+      return expect(settings.delete()).to.eventually.be.rejected;
+    });
+
+    it('should fail to delete settings - sync', function () {
+      var fn = function () {
+        settings.deleteSync();
+      };
+
+      expect(fn).to.throw();
     });
 
     afterEach(function () {

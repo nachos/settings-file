@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var fs = require('fs');
 
 module.exports.instanceSettings = function (uuid, settings) {
-  var template = { instances: { } };
+  var template = {instances: {}};
 
   template.instances[uuid] = settings;
 
@@ -43,15 +43,45 @@ module.exports.mockExisting = function (mockery, content) {
 };
 
 module.exports.mockNotExisting = function (mockery) {
+  var enoent = new Error('err');
+  enoent.code = 'ENOENT';
+
   var jsonfile = {
-    readFileSync: sinon.stub().throws('err'),
-    readFile: sinon.stub().callsArgWith(1, 'err'),
+    readFileSync: sinon.stub().throws(enoent),
+    readFile: sinon.stub().callsArgWith(1, enoent),
     writeFileSync: sinon.stub(),
     writeFile: sinon.stub().callsArgWith(2, null)
   };
 
-  fs.unlinkSync = sinon.stub().throws('err');
-  fs.unlink = sinon.stub().callsArgWith(1, 'err');
+  fs.unlinkSync = sinon.stub().throws(enoent);
+  fs.unlink = sinon.stub().callsArgWith(1, enoent);
+
+  mockery.registerMock('jsonfile', jsonfile);
+  mockery.registerMock('fs', fs);
+
+  mockery.enable({
+    useCleanCache: true,
+    warnOnUnregistered: false
+  });
+
+  return {
+    jsonfile: jsonfile,
+    fs: fs
+  };
+};
+
+module.exports.mockFailing = function (mockery) {
+  var error = new Error('err');
+
+  var jsonfile = {
+    readFileSync: sinon.stub().throws(error),
+    readFile: sinon.stub().callsArgWith(1, error),
+    writeFileSync: sinon.stub(),
+    writeFile: sinon.stub().callsArgWith(2, null)
+  };
+
+  fs.unlinkSync = sinon.stub().throws(error);
+  fs.unlink = sinon.stub().callsArgWith(1, error);
 
   mockery.registerMock('jsonfile', jsonfile);
   mockery.registerMock('fs', fs);
