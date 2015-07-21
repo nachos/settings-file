@@ -43,9 +43,88 @@ Settings file is a tool to handle nachos settings files
 ```
 
 ## Examples
+### Initialize
 ``` js
 var SettingsFile = require('settings-file');
 
+// Wraps /path/to/user/home/.nachos/data/test.json file
+var settingsFile = new SettingsFile('test'); 
+
+// Provide default settings
+var settingsFile = new SettingsFile('test', {
+    globalDefaults: {color: 'blue'},
+    instanceDefaults: {color: 'red'}
+  }); 
+```
+
+### Global Settings
+``` js
+// Read global settings
+settingsFile.get()
+  .then(function(settings) {
+    // do stuff with settings
+  });
+  
+// Set selective fields
+// file contents before: {color: 'blue', name: 'nacho'}
+settingsFile.set({name: 'nyancat'})
+  .then(function() {
+    // saved!
+    // file contents after: {color: 'blue', name: 'nyancat'}
+  });
+  
+// Save settings (replaces existing settings)
+// file contents before: {color: 'blue', name: 'nacho'}
+settingsFile.save({name: 'nyancat'})
+  .then(function() {
+    // saved!
+    // file contents after: {name: 'nyancat'}
+  });
+  
+// Delete the file
+settings.delete()
+  .then(function () {
+    // deleted!
+  });
+```
+
+### Instance Settings
+``` js
+// Read instance settings
+settingsFile
+  .instance(uuid)
+  .get()
+  .then(function(settings) {
+    // do stuff with settings
+  });
+  
+// Set selective fields
+// instance contents before: {color: 'red', name: 'nacho'}
+settingsFile
+  .instance(uuid)
+  .set({name: 'nyancat'})
+  .then(function() {
+    // saved!
+    // instance contents after: {color: 'red', name: 'nyancat'}
+  });
+  
+// Save settings (replaces existing settings)
+// instance contents before: {color: 'red', name: 'nacho'}
+settingsFile
+  .instance(uuid)
+  .save({name: 'nyancat'})
+  .then(function() {
+    // saved!
+    // instance contents after: {name: 'nyancat'}
+  });
+  
+// Delete the instance  
+settings
+  .instance(uuid)
+  .delete()
+  .then(function () {
+    // deleted!
+  });
 ```
 
 ## Run Tests
