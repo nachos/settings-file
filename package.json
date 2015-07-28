@@ -1,7 +1,7 @@
 {
   "name": "nachos-settings-file",
   "version": "1.0.0",
-  "description": "The package to handle nachos settings files",
+  "description": "Settings file is a tool to handle nachos settings files",
   "main": "lib\\index.js",
   "scripts": {
     "lint": "gulp lint",
@@ -53,6 +53,7 @@
     "jsonfile": "^2.2.1",
     "lodash": "^3.10.0",
     "mkdirp": "^0.5.1",
+    "nachos-home": "^1.0.0",
     "q": "^1.4.1"
   }
 }
