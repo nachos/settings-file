@@ -2,7 +2,7 @@
   "name": "nachos-settings-file",
   "version": "1.0.0",
   "description": "Settings file is a tool to handle nachos settings files",
-  "main": "lib\\index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "gulp lint",
     "test": "gulp test",
