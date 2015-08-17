@@ -1,6 +1,6 @@
 {
   "name": "nachos-settings-file",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Settings file is a tool to handle nachos settings files",
   "main": "lib/index.js",
   "scripts": {
