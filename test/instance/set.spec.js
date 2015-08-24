@@ -11,10 +11,16 @@ chai.use(require('sinon-chai'));
 
 describe('instance set', function () {
   describe('existing app', function () {
-    var existInstanceContent = { test: 'before', test2: 'test2'};
+    var existInstanceContent = {
+      test: 'before',
+      test2: 'test2'
+    };
     var existContent = util.instanceSettings(uuid, existInstanceContent);
-    var content = { test: 'test' };
-    var expected = util.instanceSettings(uuid, { test: content.test, test2: existInstanceContent.test2 });
+    var content = {test: 'test'};
+    var expected = util.instanceSettings(uuid, {
+      test: content.test,
+      test2: existInstanceContent.test2
+    });
     var settings;
     var instance;
     var jsonfile;
@@ -44,7 +50,7 @@ describe('instance set', function () {
   });
 
   describe('non existing app', function () {
-    var content = { test: 'test' };
+    var content = {test: 'test'};
     var expected = util.instanceSettings(uuid, content);
     var settings;
     var instance;

@@ -9,7 +9,7 @@ chai.use(require('chai-as-promised'));
 
 describe('global get', function () {
   describe('existing app', function () {
-    var test = { global: { test: 'test' } };
+    var test = {global: {test: 'test'}};
     var SettingsFile;
 
     beforeEach(function () {
@@ -46,7 +46,10 @@ describe('global get', function () {
         settings = new SettingsFile('test', {
           globalDefaults: defaults
         });
-        expected = { test: test.global.test, test2: defaults.test2 };
+        expected = {
+          test: test.global.test,
+          test2: defaults.test2
+        };
       });
 
       it('should return the global content combined with defaults', function () {

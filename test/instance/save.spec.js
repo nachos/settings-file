@@ -11,8 +11,11 @@ chai.use(require('sinon-chai'));
 
 describe('instance save', function () {
   describe('existing app', function () {
-    var existContent = util.instanceSettings(uuid, { test: 'before', test2: 'test2'});
-    var content = { test: 'test' };
+    var existContent = util.instanceSettings(uuid, {
+      test: 'before',
+      test2: 'test2'
+    });
+    var content = {test: 'test'};
     var expected = util.instanceSettings(uuid, content);
     var settings;
     var instance;
@@ -43,7 +46,7 @@ describe('instance save', function () {
   });
 
   describe('non existing app', function () {
-    var content = { test: 'test' };
+    var content = {test: 'test'};
     var expected = util.instanceSettings(uuid, content);
     var settings;
     var instance;

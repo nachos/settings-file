@@ -26,7 +26,10 @@ describe('instance delete', function () {
       beforeEach(function () {
         existContent.instances = {};
         existContent.instances[uuid] = {test: 'test'};
-        expected = {global: {test: 'test'}, instances: {}};
+        expected = {
+          global: {test: 'test'},
+          instances: {}
+        };
 
         jsonfile = util.mockExisting(mockery, existContent).jsonfile;
         var SettingsFile = require('../../lib/index');

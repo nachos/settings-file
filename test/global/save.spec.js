@@ -10,9 +10,14 @@ chai.use(require('sinon-chai'));
 
 describe('global save', function () {
   describe('existing app', function () {
-    var existContent = { global: { test: 'before', test2: 'test2'} };
-    var content = { test: 'test' };
-    var expected = { global: content };
+    var existContent = {
+      global: {
+        test: 'before',
+        test2: 'test2'
+      }
+    };
+    var content = {test: 'test'};
+    var expected = {global: content};
     var settings;
     var jsonfile;
 
@@ -40,8 +45,8 @@ describe('global save', function () {
   });
 
   describe('non existing app', function () {
-    var content = { test: 'test' };
-    var expected = { global: content };
+    var content = {test: 'test'};
+    var expected = {global: content};
     var settings;
     var jsonfile;
 

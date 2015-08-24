@@ -10,7 +10,7 @@ chai.use(require('chai-as-promised'));
 
 describe('instance get', function () {
   describe('existing app', function () {
-    var instanceContent = { test: 'test' };
+    var instanceContent = {test: 'test'};
     var existContent = util.instanceSettings(uuid, instanceContent);
     var SettingsFile;
 
@@ -49,7 +49,10 @@ describe('instance get', function () {
         instance = new SettingsFile('test', {
           instanceDefaults: defaults
         }).instance(uuid);
-        expected = { test: instanceContent.test, test2: defaults.test2 };
+        expected = {
+          test: instanceContent.test,
+          test2: defaults.test2
+        };
       });
 
       it('should return the instance content combined with defaults', function () {
