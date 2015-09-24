@@ -58,7 +58,7 @@ describe('constructor', function () {
   });
 
   describe('with valid parameters', function () {
-    it('should', function () {
+    it('should not throw an error', function () {
       var fn = function () {
         new SettingsFile('test');
       };
