@@ -1,5 +1,7 @@
 # settings-file
 
+[![Join the chat at https://gitter.im/nachos/settings-file](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nachos/settings-file?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Settings file is a tool to handle nachos settings files
 
 <table>
